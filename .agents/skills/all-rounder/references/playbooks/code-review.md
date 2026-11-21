@@ -15,13 +15,13 @@ Diff or revision range, intended behavior, relevant project standards, affected 
 ## Execution procedure
 
 1. Establish the correct baseline and read the implementation with its callers and tests. Trace representative success and failure paths.
-2. Check boundary inputs, error propagation, permissions, data integrity, concurrency, and compatibility where applicable.
+2. Check boundary inputs, error propagation, permissions, data integrity, concurrency, and older callers or persisted formats where applicable.
 3. Check whether tests reach the changed behavior and fail for the defect they are intended to detect. Evaluate duplication or complexity when it creates a concrete maintenance risk.
 4. Prioritize confirmed findings by impact and likelihood. Include location, triggering conditions, consequence, supporting evidence, and an actionable correction.
 
 ## Decision criteria
 
-Classify findings by user or operational impact. Separate confirmed issues from open questions and formatting preferences.
+Rank confirmed findings by impact and plausible reachability. Give the triggering conditions, or mark the observation conditional if actual configuration, caller behavior, or reproduction is missing.
 
 ## Quality and safety rules
 

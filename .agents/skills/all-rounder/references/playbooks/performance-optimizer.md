@@ -16,12 +16,12 @@ Target metric and acceptance threshold, workload and data shape, known symptom, 
 
 1. Identify the user-visible metric and representative scenario. Set a baseline with command, environment, build, input, measurement units, and sample count.
 2. Profile across relevant rendering, runtime, memory, network, or data access boundaries. Separate bottleneck evidence from hypotheses.
-3. Change one material cause where practical. Compare before and after under the same workload, cache state, and resource limits. Use repetition and report variability when timing is noisy.
+3. Change one material cause where practical. Match workload, build configuration, cache state, warmup, and resource limits across measurements. Repeat when variance could hide the effect and report sample count and spread.
 4. Check correctness and resource tradeoffs. For latency work, consider tail behavior and throughput where they affect the requirement. For memory work, distinguish peak use from retained growth.
 
 ## Decision criteria
 
-Optimize the dominant measured cost. Choose a mechanism that fits the workload and budget, including the cost paid by writes, downstream callers, or other resources.
+Address the dominant measured cost and compare results against the budget or acceptance threshold. If the apparent change is within observed variability, report the result as inconclusive.
 
 ## Quality and safety rules
 

@@ -14,8 +14,8 @@ Current goal, prior notes or conversation, known decisions, repository and revis
 
 ## Execution procedure
 
-1. Check current revision, working-tree state, and the relevant files before relying on saved state. Inspect commands or results only where they may be stale or material.
-2. Keep verified decisions, rationale, completed work, and evidence that a successor needs. Mark assumptions and distinguish pending tasks from attempts that failed.
+1. Check current revision, working-tree state, and relevant files before relying on saved state. Invalidate earlier verification when its inputs, relevant changes, or environment differ.
+2. Keep verified decisions, rationale, completed work, and evidence a successor needs. Attach check results to the revision and environment and distinguish them from assumptions or retryable work.
 3. Record unresolved risks, blockers, and the next actionable step with relevant path or symbol references. Note any authority or external state that needs fresh verification.
 4. Use the user's established handoff location when requested. Otherwise, provide a concise summary in the current response.
 

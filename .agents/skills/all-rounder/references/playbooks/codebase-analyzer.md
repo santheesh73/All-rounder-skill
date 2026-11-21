@@ -15,13 +15,13 @@ Question or symptom, repository or revision, candidate entry points, and relevan
 ## Execution procedure
 
 1. Inspect applicable instructions, working-tree state, and the nearest manifests or configuration needed to locate entry points.
-2. Search for public symbols, route registrations, configuration keys, or test names tied to the task. Read the definitions and relevant callers.
+2. Search for task-specific symbols, route registrations, or keys near the likely entry point. Expand to callers, implementations, and configuration only where they can change the explanation or edit.
 3. Follow data from entry point to side effect or output. Check how runtime wiring selects the implementation and how failure and fallback paths behave.
 4. Read alternate callers, generated code, and representative tests where they affect conclusions. Identify reusable code and affected dependencies.
 
 ## Decision criteria
 
-For explanation, stop when evidence supports the requested flow. For a change, establish affected contracts and at least one verification path.
+For explanation, stop when the active path accounts for the observed behavior and uncertainty. For a change, trace affected callers and preserved contracts, find the nearest reusable mechanism, and identify a verification path before widening the search.
 
 ## Quality and safety rules
 

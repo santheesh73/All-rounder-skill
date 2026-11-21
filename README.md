@@ -37,6 +37,8 @@ For another Agent Skills-compatible host, place the same folder in its documente
 | Task | Example prompt after invoking the skill |
 | --- | --- |
 | Plan a feature | Plan a CSV import feature. Identify acceptance criteria, dependencies, and how failed rows should be reported. |
+| Analyze a codebase | Trace invoice export from its endpoint to the queue and worker. Identify where retries are configured and what remains unknown. |
+| Implement a feature | Add per-row errors to CSV imports. Preserve the existing response for successful imports and verify both paths. |
 | Fix a bug | Investigate why blank rows crash CSV imports. Add a regression test and report which checks ran. |
 | Review a change | Review the billing changes for defects and missing tests. Cite the relevant files and leave the code as-is. |
 | Assess release readiness | Check whether the current billing release candidate is ready. Verify CI evidence, migration risks, and recovery steps. Keep the assessment read-only. |
@@ -49,15 +51,48 @@ The [entrypoint](.agents/skills/all-rounder/SKILL.md) chooses an execution mode 
 - **Standard** traces dependencies and verifies changes at affected boundaries.
 - **High Assurance** adds explicit permission checks, stronger verification, and recovery planning where appropriate.
 
-The skill uses [playbook routing](.agents/skills/all-rounder/references/routing.md) to select from 16 playbooks covering planning, architecture, codebase analysis, development, frontend design, databases, debugging, testing, code review, security, performance, browser testing, Git, deployment, documentation, and handoffs. It loads supporting playbooks when their guidance is needed.
+The skill selects a primary playbook for the requested decision and loads supporting guidance when it adds a distinct check or procedure. Small, well-understood edits can use the Lightweight workflow directly. If a specialist already covers the task, All-rounder adds guidance only for a separate decision or verification gap. [Playbook routing](.agents/skills/all-rounder/references/routing.md)
 
-Shared references cover [quality gates](.agents/skills/all-rounder/references/quality-gates.md), [permissions and risk](.agents/skills/all-rounder/references/risk-policy.md), [tool fallbacks](.agents/skills/all-rounder/references/capability-fallbacks.md), and [reporting evidence](.agents/skills/all-rounder/references/evidence-contract.md).
+Shared references define checks proportionate to the task, permission boundaries, alternatives for missing tools, and what counts as evidence. [Quality gates](.agents/skills/all-rounder/references/quality-gates.md) · [Permissions and risk](.agents/skills/all-rounder/references/risk-policy.md) · [Tool fallbacks](.agents/skills/all-rounder/references/capability-fallbacks.md) · [Evidence contract](.agents/skills/all-rounder/references/evidence-contract.md)
 
-## Verification
+## Capabilities
 
-- The skill passed frontmatter, package structure, and internal link checks.
-- Codex discovered it as an enabled project skill. An independent evaluator manually loaded it for three read-only scenarios covering code explanation, authorization review, and release readiness.
-- Automatic activation in Codex and discovery or activation in the other listed agents remain untested. The installation paths above come from each agent’s documentation.
+| Area | Playbooks |
+| --- | --- |
+| Plan and understand | Project Planner orders work around acceptance criteria. Software Architect defines boundaries and tradeoffs. Codebase Analyzer traces existing behavior. Context Manager reconciles decisions and handoff evidence. |
+| Build | Full-Stack Development implements feature slices. Frontend Design handles layout and interaction. Database Engineer protects data and migration invariants. Documentation Writer verifies technical instructions against their source. |
+| Diagnose and verify | Systematic Debugging isolates causes. Test-Driven Development selects regression and contract checks. Browser Testing exercises rendered journeys. Performance Optimizer compares measurements under matched conditions. |
+| Review and deliver | Code Review finds actionable defects. Security Auditor assesses defensive controls. Git Workflow scopes branch and commit operations. Deployment Engineer verifies release and recovery conditions. |
+
+## Repository structure
+
+```text
+.
+├── README.md
+├── LICENSE
+└── .agents/skills/all-rounder/
+    ├── SKILL.md
+    └── references/
+        ├── playbooks/                # 16 engineering playbooks
+        ├── routing.md
+        ├── quality-gates.md
+        ├── risk-policy.md
+        ├── capability-fallbacks.md
+        ├── evidence-contract.md
+        └── validation-scenarios.md
+```
+
+This repository ships one portable, instruction-based Agent Skill. File access, test execution, browser and service checks, and permissions depend on the host and project.
+
+## Compatibility and verification
+
+The [validation scenarios](.agents/skills/all-rounder/references/validation-scenarios.md) cover activation, selective routing, tool gaps, safety, and evidence reporting. Use the documented procedure to repeat the cases on a particular host and model.
+
+- **Specification compatible.** The skill passed frontmatter, package structure, and internal link checks. [Agent Skills specification](https://agentskills.io/specification)
+- **Codex.** Project discovery, explicit invocation, and selective reference reads were verified. Automatic activation and non-activation were observed in separate examples. One automatic run selected the release playbook and omitted the expected database support reference.
+- **OpenCode.** CLI discovery was verified in isolated projects. Model activation remains untested.
+- **Other listed agents.** The setup paths are documented by their vendors. Runtime discovery and activation remain untested.
+- **Behavioral evaluation.** Independent evaluators worked through 26 read-only synthetic cases. One matched Codex release assessment reached the same decision with and without the skill. These results cover the recorded cases.
 
 ## License
 

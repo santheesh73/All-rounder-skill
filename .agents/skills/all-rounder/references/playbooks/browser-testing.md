@@ -16,7 +16,7 @@ Approved URL or local preview command, representative roles and fixtures, critic
 
 1. Identify the acceptance flows and relevant states. Confirm environment, account, and data before using controls that write or submit.
 2. Use existing browser tooling. Exercise navigation, forms, validation, and failure or recovery flows through visible controls with representative data.
-3. Check narrow and wide layouts, keyboard order, focus, labels, and other applicable accessibility behavior. Capture relevant console and network errors without secrets or private payloads.
+3. Choose browsers and viewports from the support matrix and affected layout modes. Check keyboard order, focus, labels, errors, and regressions along the primary journey. Capture relevant console and network failures with sensitive details removed.
 4. Collect evidence only when it adds value. For failures, record build, browser, viewport, preconditions, steps, expected result, and observed result.
 
 ## Decision criteria
@@ -29,7 +29,7 @@ Use disposable accounts or fixtures for writes. Avoid real purchases, messages, 
 
 ## Failure handling
 
-If a browser is unavailable, use relevant component or static checks and describe the manual flows, inputs, and viewports still required.
+If a browser is unavailable, report the rendered journey as unavailable. Record separately any static or component results, plus the browser, viewport, inputs, and interactions still needed.
 
 ## Expected result
 

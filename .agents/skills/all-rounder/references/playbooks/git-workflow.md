@@ -15,13 +15,13 @@ Repository root, current branch and upstream, staged and unstaged changes, untra
 ## Execution procedure
 
 1. Inspect status, staged and unstaged diffs, and relevant history. Resolve the target branch, worktree, remote URL, and base before making changes.
-2. Separate requested edits from unrelated work, including edits in the same file. If asked to stage, inspect the exact staged patch and confirm intended paths or hunks.
+2. Separate intended hunks from unrelated edits, including edits in the same file. For mixed staging, verify the exact candidate patch and the staged and unstaged work that must be preserved.
 3. For a commit, verify the index and select a message describing the change. For a pull request, compare against the requested base and report actual verification.
 4. After the requested operation, confirm status, resulting commit or branch tracking, or the published reference. Recheck the merge or rebase state after conflicts.
 
 ## Decision criteria
 
-Use additive or reversible operations where feasible. For mixed staged work, preserve the existing index and stop before a commit that would include unrelated edits.
+Use additive, file- or hunk-scoped operations where feasible. If an ordinary commit would include unrelated staged work, use a supported scoped method that preserves the index or report the blocker. Verify the target ref before remote operations.
 
 ## Quality and safety rules
 

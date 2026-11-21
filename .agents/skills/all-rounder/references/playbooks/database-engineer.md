@@ -16,9 +16,9 @@ Engine and version, schema and migrations, data shape and scale, read and write 
 
 1. State data invariants. Review keys, nullability, uniqueness, referential integrity, and role permissions.
 2. Check existing data against new constraints. Plan how to handle duplicates, orphans, or invalid values before enforcement.
-3. For mixed-version deployments, choose a compatible sequence such as expand, backfill, verify, then contract. Check locking, transaction semantics, concurrency, and retries in the chosen engine.
+3. For mixed-version deployments, choose a compatible sequence such as expand, backfill, verify, then contract. Determine lock acquisition, writer behavior, transaction support for DDL, and what can be retried in the actual engine.
 4. Compare query plans across representative parameters in a suitable environment. Evaluate index maintenance cost and preserve results, ordering, and visibility.
-5. Check postconditions using representative sanitized fixtures and application roles. Account for an interrupted migration or backfill.
+5. Verify invariants under application roles and representative sanitized records. For a backfill, define how progress is detected and how a retry avoids duplicating or skipping concurrent writes.
 
 ## Decision criteria
 

@@ -15,9 +15,9 @@ Requested outcome, hard constraints, affected users or callers, existing capabil
 ## Execution procedure
 
 1. State the behavior that changes and identify current behavior users rely on.
-2. Write acceptance criteria at the point of use. Include representative failure cases and any compatibility or migration behavior.
+2. Put each acceptance criterion at an observable entry point. Include failure and compatibility criteria when they change design or delivery order.
 3. Investigate uncertainties that could change the plan. Check existing capabilities before assuming a new dependency or rewrite.
-4. Order slices by dependency and risk. Give each slice an output and a check. Identify blocking decisions, required approvals, and points where work can safely pause.
+4. Order slices by dependency, uncertainty, and impact. Resolve unknowns that could invalidate later work first. Give each slice an output and a check. Mark blocked steps and advance independent, authorized implementation.
 
 ## Decision criteria
 

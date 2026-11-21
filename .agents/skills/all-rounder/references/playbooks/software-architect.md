@@ -16,8 +16,8 @@ Existing modules and deployment topology, external consumers, data ownership, fa
 
 1. Trace one representative request through component boundaries, storage, and external effects. Trace what happens when a dependency fails.
 2. Identify the owner of each invariant and source of truth. Specify boundary contracts, validation, authorization, and compatibility.
-3. Compare feasible options against coupling, change cost, failure isolation, observability, and operational burden. Start with the existing architecture.
-4. Design for timeouts, retries, consistency, and partial failure where applicable. Specify transition and recovery points for changes to existing interfaces or data ownership.
+3. Compare the existing design and viable alternatives against coupling, operational burden, failure isolation, and measured capacity limits. Identify the load or change that would justify another boundary.
+4. Define behavior under timeouts, retries, and partial failure. Identify the consistency guarantee, who owns recovery, and what old and new consumers can tolerate during migration.
 5. Record the selected design, material tradeoffs, and evidence that would justify revisiting it.
 
 ## Decision criteria

@@ -14,10 +14,10 @@ Intended audience, requested document, current behavior, relevant source or comm
 
 ## Execution procedure
 
-1. Locate the authoritative implementation or contract. Trace examples and instructions to current commands, options, configuration, and output.
+1. Locate the authoritative implementation or contract. Match API examples to current inputs, outputs, status codes, and failures. Match setup commands to supported versions and real entry points.
 2. Choose the document shape around the reader's task. Put prerequisites before steps and describe observable results and relevant failure recovery.
 3. Update the nearest authoritative material. Keep examples minimal, use safe placeholder values, and link to longer material where it already exists.
-4. Run safe examples or applicable documentation checks where feasible. Inspect relative links and verify that examples describe the intended version.
+4. Run safe commands from the documented starting directory when feasible. Check relative links and version-specific references, and record which examples were verified by inspection alone.
 
 ## Decision criteria
 

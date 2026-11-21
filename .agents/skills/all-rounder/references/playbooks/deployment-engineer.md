@@ -14,11 +14,11 @@ Release scope and revision, build and environments, CI or release workflow, conf
 
 ## Execution procedure
 
-1. Identify the exact artifact, target environment, build provenance, and required CI results. Check configuration keys, secret references, and compatibility across components.
+1. Identify the candidate revision, artifact or build identifier, and target. Match CI and build evidence to that exact candidate. Check required configuration keys, secret references, and version compatibility.
 2. Review changes that affect startup, data migrations, traffic, and operations. Define preconditions and failure criteria for proceeding or stopping.
 3. Specify rollout order and smoke checks. Identify monitoring signals, their observation window, and the owner or mechanism that can halt or recover the release.
 4. Validate recovery against the actual state changes. For irreversible data changes, specify forward repair or restore and its prerequisites.
-5. If execution is authorized, use the established release mechanism and record the target, deployed revision, health checks, and observed outcome.
+5. Execute only with authority for the named target. Observe agreed smoke and health checks against the deployed artifact. Stop or apply the approved recovery procedure if a defined halt condition is met.
 
 ## Decision criteria
 

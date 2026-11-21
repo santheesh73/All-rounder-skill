@@ -4,6 +4,14 @@ Report the requested outcome and what was achieved. Describe changes with paths 
 
 Report checks actually executed, naming the command or inspection, relevant environment or revision, and result. Use the statuses from the quality gates when it matters to distinguish passed, failed, unrun, unavailable, and irrelevant checks. A static review supports static conclusions. A mocked dependency supports conclusions about the checks it actually exercises.
 
+| Outcome | Evidence to include when material |
+| --- | --- |
+| Implementation | Changed behavior and paths, checks that ran, open failures or unavailable checks, and any remaining risk. |
+| Review | Severity, location, triggering condition, consequence, and suggested correction. Mark conditional observations and identify the evidence they need. |
+| Analysis or handoff | Observed state, supported conclusions, assumptions, and uncertainty tied to the current revision. |
+| Performance | Baseline, changed condition, comparable measurements, variability, and correctness results. |
+| Release readiness | Candidate and target, matching check evidence, unmet release conditions, and recovery concerns. Record live outcomes only for actual authorized execution. |
+
 Describe limitations and remaining risks that affect acceptance or a release decision. Give a next action only when it resolves a real ambiguity, verification gap, or blocker. For a small task, keep this to the outcome, evidence, and any material gap.
 
 Support claims at the level of detail they imply. A subset of checks establishes that subset's result. Quantified performance changes require comparable measurements. Deployment claims require the observed target and health result. Security and readiness conclusions need a stated scope and supporting checks. Exclude secrets and private payloads from examples and evidence.

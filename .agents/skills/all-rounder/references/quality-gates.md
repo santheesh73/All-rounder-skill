@@ -2,6 +2,8 @@
 
 Choose checks from the requested acceptance criteria and the failure modes of the affected change. Prefer checks through the real entry point and reuse current results only when they cover the same revision, configuration, and behavior.
 
+For small reversible work, verify the affected outcome and inspect the scoped change. For high-impact work, check the relevant failure paths as well as success. Access changes need representative allowed and denied identities. Financial or persistent writes may need duplicate, interrupted, or concurrent request checks. A release or irreversible change needs candidate-specific evidence and a recovery path where applicable.
+
 | Gate | Apply when | Evidence to seek |
 | --- | --- | --- |
 | Requirements | Any task with an expected outcome | Inspect the deliverable against acceptance criteria and exercise observable behavior where applicable. |
@@ -16,10 +18,10 @@ Choose checks from the requested acceptance criteria and the failure modes of th
 
 ## Check status
 
-- **PASSED** means a check ran or the required inspection was completed, and the evidence met the criterion.
-- **FAILED** means a check ran or an inspection was completed and the criterion was not met. State the observed failure and its impact.
-- **NOT RUN** means an applicable check was omitted despite being feasible. State why.
-- **UNAVAILABLE** means an applicable check could not produce a result because a required tool, permission, environment, or fixture was missing. State the missing prerequisite and any narrower check that ran.
+- **PASSED** means the named check actually completed and met its criterion. Label it as static, unit, integration, browser, or live as appropriate. Passing at a narrower boundary leaves broader checks open.
+- **FAILED** means the named check completed and found a criterion unmet. State the observation and its impact.
+- **NOT RUN** means the applicable check was omitted, deferred, or inconclusive because its conditions were never exercised. State why.
+- **UNAVAILABLE** means a missing tool, dependency, fixture, permission, or unreachable environment prevented the applicable check from producing a result. Name the prerequisite and report any narrower check separately.
 - **NOT APPLICABLE** means the gate does not apply to the task. Omit routine irrelevant gates from the user report.
 
-When a check fails, use the error to distinguish a behavior defect from a setup issue. Fix in-scope defects and rerun impacted checks. If a required gate remains open, identify the incomplete acceptance criterion. Treat a pre-existing failure as such only when baseline evidence supports the attribution.
+If an assertion fails, isolate the cause, fix in-scope defects, and rerun affected checks. Attribute an existing failure to the baseline only when equivalent evidence supports it. A runner that stops during setup leaves the behavioral check unavailable. A failure that cannot be reproduced leaves its original conditions unverified, even if a narrower check passed. For external services or deployment, report mock and live results separately. If a required gate remains open, identify the affected acceptance or release criterion.

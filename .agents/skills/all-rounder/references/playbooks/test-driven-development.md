@@ -15,14 +15,14 @@ Behavioral contract, supported inputs and failures, test runner and conventions,
 ## Execution procedure
 
 1. Choose the nearest stable interface that can detect the defect. Cover materially different inputs and assert externally meaningful outcomes.
-2. For test-first work, run the check against the baseline and confirm the expected behavioral failure.
+2. Use test-first when the behavior is clear and the test can isolate it. Run the new check on the baseline and confirm the assertion fails for the intended reason. Treat setup errors as a separate outcome.
 3. Make the smallest correct change and rerun the focused check. After a necessary refactor, rerun relevant checks.
 4. Use small deterministic fixtures. Exercise actual serialization, storage, or runtime wiring when the likely failure lies at that boundary.
 5. Record commands and observed results. Where a test was added after the fix, confirm it detects the regression on an isolated baseline when feasible.
 
 ## Decision criteria
 
-Use unit coverage for local rules, integration checks for boundary contracts, and end-to-end tests where wiring or sequencing matters.
+Use unit coverage for local rules, integration checks for actual contracts across boundaries, and end-to-end tests where wiring or sequencing matters. Name any boundary replaced by a test double.
 
 ## Quality and safety rules
 
