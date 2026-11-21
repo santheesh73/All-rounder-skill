@@ -1,0 +1,9 @@
+# Evidence contract
+
+Report the requested outcome and what was achieved. Describe changes with paths or symbols where they help the user verify the work. For reviews, lead with supported findings ordered by impact. For analysis, distinguish observations from inferences and name assumptions that change the result.
+
+Report checks actually executed, naming the command or inspection, relevant environment or revision, and result. Use the statuses from the quality gates when it matters to distinguish passed, failed, unrun, unavailable, and irrelevant checks. A static review supports static conclusions. A mocked dependency supports conclusions about the checks it actually exercises.
+
+Describe limitations and remaining risks that affect acceptance or a release decision. Give a next action only when it resolves a real ambiguity, verification gap, or blocker. For a small task, keep this to the outcome, evidence, and any material gap.
+
+Support claims at the level of detail they imply. A subset of checks establishes that subset's result. Quantified performance changes require comparable measurements. Deployment claims require the observed target and health result. Security and readiness conclusions need a stated scope and supporting checks. Exclude secrets and private payloads from examples and evidence.
