@@ -2,7 +2,7 @@
 
 Report the requested outcome and what was achieved. Describe changes with paths or symbols where they help the user verify the work. For reviews, lead with supported findings ordered by impact. For analysis, distinguish observations from inferences and name assumptions that change the result.
 
-Report checks actually executed, naming the command or inspection, relevant environment or revision, and result. Use the statuses from the quality gates when it matters to distinguish passed, failed, unrun, unavailable, and irrelevant checks. A static review supports static conclusions. A mocked dependency supports conclusions about the checks it actually exercises.
+Name the check or inspection, relevant environment or revision, and observed result. Use the quality-gate statuses for material gaps. Attribute behavior claims to the inputs and boundary actually checked. For example, explicitly supplying a null value leaves argument omission unverified.
 
 | Outcome | Evidence to include when material |
 | --- | --- |

@@ -1,6 +1,6 @@
 # All-rounder Skill
 
-All-rounder is a portable [Agent Skill](https://agentskills.io/specification) that gives coding agents a repeatable workflow for planning, building, debugging, reviewing, and releasing software. It helps the agent decide what to inspect, which changes are in scope, and what evidence to collect before calling the work complete.
+All-rounder gives coding agents a repeatable workflow for planning, building, debugging, reviewing, and releasing software. It helps the agent choose the right depth of investigation, keep changes in scope, and gather evidence for the result. [Agent Skills specification](https://agentskills.io/specification)
 
 ## Quick start with Codex
 
@@ -86,13 +86,13 @@ This repository ships one portable, instruction-based Agent Skill. File access, 
 
 ## Compatibility and verification
 
-The [validation scenarios](.agents/skills/all-rounder/references/validation-scenarios.md) cover activation, selective routing, tool gaps, safety, and evidence reporting. Use the documented procedure to repeat the cases on a particular host and model.
+The evaluation pairs skill-disabled and explicitly invoked sessions on disposable fixtures. Both use the same prompt, starting files, tools, and acceptance checks. Separate automatic runs record which references the host reads. [Validation protocol and results](.agents/skills/all-rounder/references/validation-scenarios.md)
 
 - **Specification compatible.** The skill passed frontmatter, package structure, and internal link checks. [Agent Skills specification](https://agentskills.io/specification)
-- **Codex.** Project discovery and explicit invocation were verified. After the release routing fix, three automatic migration reviews read both expected playbooks. A docs-only release control read only Deployment Engineer. These reference traces came from app-server sessions with a restricted Markdown reader.
+- **Codex.** Project discovery, explicit invocation, and automatic activation were observed in isolated app-server sessions. Five migration-sensitive release variants loaded both expected playbooks. The docs-only control skipped Database Engineer. The record retains an initial feature-slice and test-coverage misroute and the passing reruns.
 - **OpenCode.** CLI discovery was verified in isolated projects. Two model requests timed out before activation could be verified.
 - **Other listed agents.** The setup paths are documented by their vendors. Runtime discovery and activation remain untested.
-- **Behavioral evaluation.** Independent evaluators worked through 26 read-only synthetic cases. One matched Codex release assessment reached the same decision with and without the skill. These results cover the recorded cases.
+- **Behavioral evaluation.** Independent evaluators reviewed 26 read-only cases. Both arms eventually passed all six coding fixtures, including SQLite and a headless Edge interaction. The CSV baseline initially timed out and passed on a fresh run. The sample shows no consistent correctness, token, or speed advantage.
 
 If standalone Windows Codex cannot start its shell, run `codex doctor` to check sandbox provisioning. After host repair, confirm that Codex can read a plain project file before rerunning the skill tests. [Codex Windows sandbox troubleshooting](https://learn.chatgpt.com/docs/windows/windows-sandbox#troubleshooting-and-faq)
 

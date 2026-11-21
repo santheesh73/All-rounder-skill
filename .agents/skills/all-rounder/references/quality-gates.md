@@ -19,8 +19,8 @@ For small reversible work, verify the affected outcome and inspect the scoped ch
 ## Check status
 
 - **PASSED** means the named check actually completed and met its criterion. Label it as static, unit, integration, browser, or live as appropriate. Passing at a narrower boundary leaves broader checks open.
-- **FAILED** means the named check completed and found a criterion unmet. State the observation and its impact.
-- **NOT RUN** means the applicable check was omitted, deferred, or inconclusive because its conditions were never exercised. State why.
+- **FAILED** means the executed check found a criterion unmet. State the observation and its impact. If evidence is inconclusive, report the observed result and leave the acceptance criterion open.
+- **NOT RUN** means the applicable check was omitted or deferred. State why.
 - **UNAVAILABLE** means a missing tool, dependency, fixture, permission, or unreachable environment prevented the applicable check from producing a result. Name the prerequisite and report any narrower check separately.
 - **NOT APPLICABLE** means the gate does not apply to the task. Omit routine irrelevant gates from the user report.
 

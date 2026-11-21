@@ -37,13 +37,16 @@ Use the highest mode warranted by the actual impact. Reassess when new evidence 
 
 ## Route and execute
 
-1. Choose the primary playbook by the decision requested. A review of a named concern such as authorization, migration safety, or test coverage belongs to that concern's playbook. Use the [playbook index](#playbook-index) for obvious tasks and [routing](references/routing.md) for overlaps. Add support at the point it contributes a distinct decision or check. Use the Lightweight workflow directly for routine, low-risk edits.
+1. Choose one primary playbook for the requested decision. Use the [playbook index](#playbook-index) for obvious tasks and [routing](references/routing.md) for overlaps. Use Lightweight directly for routine, low-risk edits. Add support when a new fact introduces a decision, safety boundary, or check outside the current playbook.
+
+   Use Full-Stack Development to define or build one feature slice. Add Security Auditor when that slice changes authorization or access to sensitive data. Use Test-Driven Development when the requested review is about test coverage or what a stub proves.
+
 2. Work through the closest usable entry point. Reuse project patterns that satisfy the requirements. Keep changes scoped and confirm behavior at the points where callers or operators experience it.
 3. Use [risk policy](references/risk-policy.md) for trust boundaries, permissions, sensitive data, destructive operations, or changes with external effects. Verify the target and authority before crossing a boundary. Use [capability fallbacks](references/capability-fallbacks.md) if a needed tool, environment, or evidence source is missing.
 4. Match verification to the requested behavior and credible failure modes. For a small edit, check the affected outcome and scoped change. Consult [quality gates](references/quality-gates.md) for multi-step, high-impact, or inconclusive verification. A static check supports a static conclusion. Report runtime checks only when they ran.
 5. Report the result, observed verification, and material gaps. Use the [evidence contract](references/evidence-contract.md) for findings or outcomes with several checks or limitations.
 
-If a check exposes a new issue, determine whether it prevents the current acceptance criteria. Fix and recheck issues within scope. Record unrelated issues only when they materially affect the user's decision.
+Fix and recheck issues that affect the requested outcome. Stop when the requested outcome is verified or the applicable checks have an explicit blocker. Record unrelated findings only when they materially affect the user's decision.
 
 ## Playbook index
 

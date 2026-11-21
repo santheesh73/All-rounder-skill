@@ -1,15 +1,13 @@
 # Playbook routing
 
-Route by the result the user requested. Choose one primary playbook for the current phase. Add a support playbook when it owns a distinct decision or check that the primary workflow cannot cover. Reassess after a change in evidence, scope, or risk, using prior findings that still apply.
-
-Use Code Review for general defect review. Route a concern-specific review to its domain owner, such as Database Engineer for migration compatibility, Security Auditor for access controls, or Test-Driven Development for coverage and contract checks. Route a request to define one implementable feature slice to Full-Stack Development, even if the user wants a design only. Use Project Planner when the deliverable is scope, ordering, or milestones.
+Route by the requested decision and choose one primary playbook for the current phase. Use the relevant domain owner for a review focused on authorization, migration safety, or test coverage. Add support when it changes a distinct decision, safety boundary, or verification step.
 
 | Requested result | Primary playbook | Add only when needed |
 | --- | --- | --- |
-| Requirements, scope, or an implementation sequence | [Project Planner](playbooks/project-planner.md) | Architecture for costly design decisions. |
+| Requirements, scope, milestones, or an implementation sequence | [Project Planner](playbooks/project-planner.md) | Architecture for costly design decisions. |
 | System design, interfaces, or ownership | [Software Architect](playbooks/software-architect.md) | Analysis for an existing system, planning for staged delivery. |
 | Explain an existing flow or map affected code | [Codebase Analyzer](playbooks/codebase-analyzer.md) | Stop after analysis when explanation is the deliverable. |
-| Implement an application feature or integration | [Full-Stack Development](playbooks/fullstack-development.md) | Analysis for unknown code, design for material UI changes, database guidance for data changes, testing for missing coverage. |
+| Define or implement one application feature or integration | [Full-Stack Development](playbooks/fullstack-development.md) | Analysis for unknown code, design for material UI changes, security for access boundaries, database guidance for data changes, testing for missing coverage. |
 | Design or redesign a UI | [Frontend Design](playbooks/frontend-design.md) | Analysis for unfamiliar existing components, browser testing for actual rendered behavior. |
 | Change schema, data integrity, roles, or queries | [Database Engineer](playbooks/database-engineer.md) | Performance for a measurable bottleneck, security for changed access boundaries, testing for data behavior. |
 | Explain or fix a benign runtime failure or a failing test whose cause is unclear | [Systematic Debugging](playbooks/systematic-debugging.md) | Analysis for unfamiliar wiring, test development when new coverage is needed. |
@@ -23,19 +21,7 @@ Use Code Review for general defect review. Route a concern-specific review to it
 | Create or update technical documentation | [Documentation Writer](playbooks/documentation-writer.md) | Analysis when implementation evidence is needed. |
 | Resume interrupted work or prepare a handoff | [Context Manager](playbooks/context-manager.md) | The next domain playbook only if execution is in scope. |
 
-## Resolve overlaps
-
-| Decision | Owner |
-| --- | --- |
-| What must be delivered, in what order, and how success is observed | Project Planner. Software Architect owns interfaces, component boundaries, and tradeoffs. |
-| What the current code does | Codebase Analyzer. Context Manager reconciles prior decisions and work state for resumption or handoff. |
-| Application behavior, contracts, and implementation across layers | Full-Stack Development. Frontend Design owns visual hierarchy, component states, and interaction patterns. |
-| Where and how to add automated behavior coverage | Test-Driven Development. Browser Testing owns verification in the rendered browser. Systematic Debugging owns diagnosis of an unexplained failing test. |
-| General defects and compatibility regressions | Code Review. Security Auditor owns trust boundaries and defensive evaluation of access controls or suspected vulnerabilities. |
-| Query semantics, locking, role visibility, and migration integrity | Database Engineer. Performance Optimizer owns measurement design and claims about resource use, throughput, and latency. |
-| Branch, index, commit, and publication state | Git Workflow. Deployment Engineer owns release evidence, target health, and recovery. |
-
-## Typical sequences
+## When the task crosses domains
 
 - **New application:** Start with planning. Add architecture for consequential design choices, then switch to Full-Stack Development and verify each implemented slice when authorized.
 - **Single-file edit with a known cause:** Use Lightweight, inspect the affected path, and run a focused check. Skip a separate planning, architecture, or debugging pass unless new evidence warrants it.
@@ -43,4 +29,4 @@ Use Code Review for general defect review. Route a concern-specific review to it
 - **Slow query:** Start with Database Engineer when preserving query semantics or changing access paths. Add Performance Optimizer for a measured before-and-after claim.
 - **Release assessment:** Start with Deployment Engineer. Reuse review and test evidence for the exact candidate. Read Database Engineer when a migration affects compatibility between builds, data integrity, or recovery.
 
-An explanation stops when the behavior is supported. A handoff stops after reporting current state unless work resumption was requested. A specialist already covering the task can own its procedure under the host's selection rules. Keep duplicate guidance and unrelated playbooks unloaded, even when their files are available.
+Reassess the next decision when evidence changes, retaining prior findings that still apply. An explanation stops when the behavior is supported. A handoff stops after reporting current state unless resumption was requested. If a specialist covers the task under the host's selection rules, load only All-rounder guidance that fills a distinct gap.

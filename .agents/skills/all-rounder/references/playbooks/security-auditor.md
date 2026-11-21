@@ -17,7 +17,7 @@ Authorized scope, revision and environments, identities and roles, sensitive dat
 1. Map entry points, trust boundaries, sensitive flows, and the expected permissions for each actor and resource. Separate authentication, object authorization, tenant isolation, and field-level access.
 2. Trace where the server enforces controls on relevant reads and writes. Check object and tenant scope, validation and encoding, secret storage, and fail-closed defaults. Inspect relevant dependency versions and reachability when dependency exposure is in scope.
 3. Consult the relevant requirements in [OWASP ASVS](https://asvs.owasp.org/) when authoritative guidance is needed. Limit the assessment to supported evidence and the authorized scope.
-4. Verify remediations with safe control checks and ordinary, non-sensitive fixtures, such as access denied for a test identity missing the required role. Review fail-closed behavior when dependencies or policy checks fail.
+4. Verify remediations at the real enforcement boundary using ordinary, non-sensitive allow and deny fixtures. Confirm that denied requests produce no protected output or state change. Review fail-closed behavior when dependencies or policy checks fail.
 5. Report affected controls, consequences, code locations, confidence, and prioritized fixes. Identify which controls require additional configuration or test evidence.
 
 ## Decision criteria
