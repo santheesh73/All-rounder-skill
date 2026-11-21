@@ -89,10 +89,12 @@ This repository ships one portable, instruction-based Agent Skill. File access, 
 The [validation scenarios](.agents/skills/all-rounder/references/validation-scenarios.md) cover activation, selective routing, tool gaps, safety, and evidence reporting. Use the documented procedure to repeat the cases on a particular host and model.
 
 - **Specification compatible.** The skill passed frontmatter, package structure, and internal link checks. [Agent Skills specification](https://agentskills.io/specification)
-- **Codex.** Project discovery, explicit invocation, and selective reference reads were verified. Automatic activation and non-activation were observed in separate examples. One automatic run selected the release playbook and omitted the expected database support reference.
-- **OpenCode.** CLI discovery was verified in isolated projects. Model activation remains untested.
+- **Codex.** Project discovery and explicit invocation were verified. After the release routing fix, three automatic migration reviews read both expected playbooks. A docs-only release control read only Deployment Engineer. These reference traces came from app-server sessions with a restricted Markdown reader.
+- **OpenCode.** CLI discovery was verified in isolated projects. Two model requests timed out before activation could be verified.
 - **Other listed agents.** The setup paths are documented by their vendors. Runtime discovery and activation remain untested.
 - **Behavioral evaluation.** Independent evaluators worked through 26 read-only synthetic cases. One matched Codex release assessment reached the same decision with and without the skill. These results cover the recorded cases.
+
+If standalone Windows Codex cannot start its shell, run `codex doctor` to check sandbox provisioning. After host repair, confirm that Codex can read a plain project file before rerunning the skill tests. [Codex Windows sandbox troubleshooting](https://learn.chatgpt.com/docs/windows/windows-sandbox#troubleshooting-and-faq)
 
 ## License
 

@@ -41,6 +41,6 @@ Use Code Review for general defect review. Route a concern-specific review to it
 - **Single-file edit with a known cause:** Use Lightweight, inspect the affected path, and run a focused check. Skip a separate planning, architecture, or debugging pass unless new evidence warrants it.
 - **Visual redesign:** Start with Frontend Design. Use Browser Testing for rendered acceptance, or report that gap if no browser is available. Load Performance Optimizer only when a budget or measured problem is in scope.
 - **Slow query:** Start with Database Engineer when preserving query semantics or changing access paths. Add Performance Optimizer for a measured before-and-after claim.
-- **Release assessment:** Start with Deployment Engineer. Reuse review and test evidence for the exact candidate. Add Database Engineer when migration compatibility or recovery matters.
+- **Release assessment:** Start with Deployment Engineer. Reuse review and test evidence for the exact candidate. Read Database Engineer when a migration affects compatibility between builds, data integrity, or recovery.
 
 An explanation stops when the behavior is supported. A handoff stops after reporting current state unless work resumption was requested. A specialist already covering the task can own its procedure under the host's selection rules. Keep duplicate guidance and unrelated playbooks unloaded, even when their files are available.

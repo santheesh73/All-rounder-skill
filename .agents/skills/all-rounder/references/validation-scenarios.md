@@ -88,3 +88,14 @@ The Codex app-server `skills/list` probe found one enabled project skill. Codex 
 | OpenCode 1.18.30 discovery | `opencode debug skill` located the copied skill at both the project `.agents/skills/` and native `.opencode/skills/` paths in separate temporary checkouts. | PASS for discovery. Model activation and reference loading remain untested. |
 
 The standard Codex CLI attempted to read the skill for case 18 but the local unified execution service could not start. Its final answer was a fallback assessment. The app-server fixture reader supplied separate evidence of successful reference reads.
+
+### Release routing regression
+
+Repeat case 18 without naming the skill, using a fresh session for each run. Check that the trace contains both Deployment Engineer and Database Engineer before the assessment. For the control, supply a docs-only candidate whose CI and artifact match its revision, with no migration, persistent-data change, or access change. Expect Deployment Engineer alone among the playbooks for that control.
+
+| Check | Observed result |
+| --- | --- |
+| Codex automatic case 18, after the routing fix | PASS in three fresh `gpt-6.2-sol` app-server sessions with the restricted Markdown reader. Each read both expected playbooks, held the release on both grounds, and performed only file reads. |
+| Codex automatic docs-only control | PASS in one fresh session with the same model and reader. It read Deployment Engineer, skipped Database Engineer, and recommended proceeding based on the supplied evidence. |
+| Standalone Windows CLI shell health | UNAVAILABLE. Two attempts to read a plain temporary file in a project without the skill failed before the shell started. `codex doctor` reported incomplete or outdated elevated sandbox provisioning. This check depends on the host runtime. |
+| OpenCode 1.18.30 activation follow-up | Discovery passed again in both layouts. The isolated read-only activation requests with `opencode/ling-3.0-flash-fin-free` and `opencode/mimo-v2.5-free` timed out. No completed activation or playbook read was observed. |
